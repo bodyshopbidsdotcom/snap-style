@@ -93,6 +93,11 @@ Style/SymbolArray:
   EnforcedStyle: brackets
   Enabled: true
 
+Style/WordArray:
+  Description:  'Prefer ["key1", "key2"] over %w[key1 key2]'
+  EnforcedStyle: brackets
+  Enabled: true
+
 Metrics/ClassLength:
   Description: 'Avoid classes longer than 250 lines of code.'
   Enabled: false
