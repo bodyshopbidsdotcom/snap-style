@@ -65,3 +65,37 @@ AllCops:
 ```
 
 It would seem you can just add another folder when in reality you are overwriting the original folder list. You will need to add prior elements from snap-style in order to have correct style.
+
+
+#### Codeclimate
+
+[Codeclimate](https://codeclimate.com/) enables github status checks for pull requests when there are rubocop errors. However codeclimate does not install dependencies on their containers, so in order to use this alongside codelimate we make use of a prepare fetch and second rubocop file:
+
+```yml
+# .codeclimate.yml
+prepare:
+  fetch:
+    - url: "https://raw.githubusercontent.com/bodyshopbidsdotcom/snap-style/master/rubocop/rubocop.yml"
+      path: ".rubocop-shared.yml"
+```
+
+```yml
+# .rubocop-shared.yml
+# NOTE: this file is only relevant locally. In codeclimate it gets overwritten by the snap-style gem from the prepare fetch
+
+inherit_gem:
+  snap-style:
+    - "rubocop/rubocop.yml"
+```
+
+Then in your project's `.rubocop.yml`, change the `inherit_gem` part to this instead:
+
+```yml
+# .rubocop.yml
+inherit_from:
+  - "./.rubocop-shared.yml"
+  
+# any overrides that will be applied for the project:
+# Metrics/ModuleLength:
+#  Max: 150
+```
