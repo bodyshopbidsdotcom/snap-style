@@ -25,4 +25,12 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.15.4"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+
+  if spec.respond_to?(:metadata)
+    spec.metadata['github_repo'] = 'https://github.com/bodyshopbidsdotcom/snap-style'
+    spec.metadata['allowed_push_host'] = 'https://rubygems.pkg.github.com/bodyshopbidsdotcom'
+  else
+    raise 'RubyGems 2.0 or newer is required to protect against ' \
+      'public gem pushes.'
+  end
 end
