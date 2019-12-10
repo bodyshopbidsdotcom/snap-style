@@ -100,12 +100,25 @@ inherit_from:
 #  Max: 150
 ```
 
-### Publishing New Version
-See https://snapsheettech.atlassian.net/wiki/spaces/TECH/pages/149946563/Github+Package+Registry
+## Building/Publishing New Version
 
-Update the `Snap::Style::VERSION` and commit it
+To release a new version, update the `Snap::Style::VERSION` version number in `version.rb`
+
+Then run `gem build snap-style.gemspec` to ensure it builds, then commit the version
+
+Create and push tags:
+
+    $ git tag -a v{version} -m "Release {version}"
+    $ git push origin v{version}
+
+
+Example:
+
+    $ git tag -a v1.0.0 -m "Release 1.0.0"
+    $ git push origin v1.0.0
+
+Finally, publish the new version to the Github Package Registry (see https://snapsheettech.atlassian.net/wiki/spaces/TECH/pages/149946563/Github+Package+Registry):
 
 ```
-gem build snap-style.gemspec
 gem push --key github --host https://rubygems.pkg.github.com/bodyshopbidsdotcom snap-style-<VERSION>.gem
 ```
