@@ -17,7 +17,7 @@ And then execute:
 Or install it yourself as:
 
     $ gem install snap-style
-    
+
 Also since this gem includes rubocop it should be removed from your projects Gemfile.
 
 ## Usage
@@ -35,7 +35,7 @@ inherit_gem:
 To check your application against the new style configurations:
 
     $ rubocop
-    
+
 #### Overriding Styles
 
 If you chose to add some exceptions in your .rubocop.yml be aware it will completely override the snap-style's defaults. It is something to be aware of - especially if you are just looking to modify a style rules.
@@ -57,7 +57,7 @@ AllCops:
 inherit_gem:
   snap-style:
     - "rubocop/rubocop.yml"
-    
+
 AllCops:
   DisplayCopNames: true
   Exclude:
@@ -94,8 +94,31 @@ Then in your project's `.rubocop.yml`, change the `inherit_gem` part to this ins
 # .rubocop.yml
 inherit_from:
   - "./.rubocop-shared.yml"
-  
+
 # any overrides that will be applied for the project:
 # Metrics/ModuleLength:
 #  Max: 150
+```
+
+## Building/Publishing New Version
+
+To release a new version, update the `Snap::Style::VERSION` version number in `version.rb`
+
+Then run `gem build snap-style.gemspec` to ensure it builds, then commit the version
+
+Create and push tags:
+
+    $ git tag -a v{version} -m "Release {version}"
+    $ git push origin v{version}
+
+
+Example:
+
+    $ git tag -a v1.0.0 -m "Release 1.0.0"
+    $ git push origin v1.0.0
+
+Finally, publish the new version to the Github Package Registry (see https://snapsheettech.atlassian.net/wiki/spaces/TECH/pages/149946563/Github+Package+Registry):
+
+```
+gem push --key github --host https://rubygems.pkg.github.com/bodyshopbidsdotcom snap-style-<VERSION>.gem
 ```
