@@ -102,9 +102,9 @@ inherit_from:
 
 ## Building/Publishing New Version
 
-To release a new version, update the `Snap::Style::VERSION` version number in `version.rb`
+To release a new version, update the `Snap::Style::VERSION` version number in `version.rb`.
 
-Then run `gem build snap-style.gemspec` to ensure it builds, then commit the version
+Then run `gem build snap-style.gemspec` to ensure it builds, then update the CHANGELOG.md and commit the version
 
 Create and push tags:
 

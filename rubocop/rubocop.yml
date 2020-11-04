@@ -17,27 +17,31 @@ AllCops:
     - 'config/**/*'
     - 'node_modules/**/*'
 
-# Cop supports --auto-correct.
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Layout/SpaceInsideReferenceBrackets:
+  Enabled: false
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
+Layout/IndentArray:
+  EnforcedStyle: 'consistent'
+
+Layout/AlignHash:
+  EnforcedColonStyle: 'key'
+  EnforcedHashRocketStyle: 'key'
+
 Style/Documentation:
   Enabled: false
 
-# Cop supports --auto-correct.
-Style/SpaceInsideBrackets:
-  Enabled: false
-
-# Cop supports --auto-correct.
 Style/IfUnlessModifier:
   Enabled: false
 
-# Cop supports --auto-correct.
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# Cop supports --auto-correct.
-Style/EmptyLinesAroundBlockBody:
-  Enabled: false
-
-# Cop supports --auto-correct.
 Style/BlockComments:
   Enabled: false
 
