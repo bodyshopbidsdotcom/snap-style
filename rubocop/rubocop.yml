@@ -7,6 +7,8 @@
 # e.g.: rubocop --auto-correct --only Style/HashSyntax
 #
 
+require: rubocop-rails
+
 Rails:
   Enabled: true
 
@@ -26,12 +28,8 @@ Layout/SpaceInsideReferenceBrackets:
 Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false
 
-Layout/IndentArray:
+Layout/FirstArrayElementIndentation:
   EnforcedStyle: 'consistent'
-
-Layout/AlignHash:
-  EnforcedColonStyle: 'key'
-  EnforcedHashRocketStyle: 'key'
 
 Style/Documentation:
   Enabled: false
@@ -54,7 +52,7 @@ Metrics/MethodLength:
 Metrics/BlockLength:
   Max: 100
 
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: false
 
 Metrics/CyclomaticComplexity:
@@ -106,3 +104,68 @@ Metrics/ClassLength:
   Description: 'Avoid classes longer than 250 lines of code.'
   Enabled: false
   Max: 250
+
+# The following cops were added between 0.63.0 and 0.81.0
+# They have default default `Enabled` values of `'pending'`, so Rubopcop forces you to enable or disable them
+Lint/RaiseException:
+    Enabled: true
+
+Lint/StructNewOverride:
+    Enabled: true
+
+# These are marked as unsafe, in addition to `Enabled: 'pending'`
+Style/HashEachMethods:
+    Enabled: false
+
+Style/HashTransformKeys:
+    Enabled: false
+
+Style/HashTransformValues:
+    Enabled: false
+
+# The following cops cause new failures in VBE
+# They need to be reviewed before enabling
+
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
+
+Layout/ArgumentAlignment:
+  Enabled: false
+
+Style/FloatDivision:
+  Enabled: false
+
+Lint/RedundantStringCoercion:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/RedundantReturn:
+  Enabled: false
+
+Layout/SpaceInsideStringInterpolation:
+  Enabled: false
+
+Style/RedundantParentheses:
+  Enabled: false
+
+# The following cops cause new failures in Viceroy
+# They need to be reviewed before enabling
+
+Layout/HashAlignment:
+  EnforcedColonStyle: 'key'
+  EnforcedHashRocketStyle: 'key'
+  Enabled: false
+
+Style/ExpandPathArguments:
+  Enabled: false
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+# The following cops cause new failures in Authenticator
+# They need to be reviewed before enabling
+
+Migration/DepartmentName:
+  Enabled: false
