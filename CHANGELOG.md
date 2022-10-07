@@ -3,7 +3,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 
-## 2.2.0 - 2022-5-16
+## 2.3.0 - 2022-10-07
+
+### Updated
+
+Relax dependency to `rubocop` to enable support for Ruby 3.
+
+## 2.2.0 - 2022-05-16
 
 ### Added
 
