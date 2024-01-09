@@ -3,6 +3,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 
+## 4.0.0 - 2024-01-08
+
+### Updated
+
+Relax dependency to `rubocop` to enable support for Ruby 3.1.
+
+Rubocop breaking changes:
+- [0.93.0](https://github.com/rubocop/rubocop/releases/tag/v0.93.0): `RegexpNode#parsed_tree` now processes regexps including interpolation (by blanking the interpolation before parsing, rather than skipping).
+- [1.0.0](https://github.com/rubocop/rubocop/releases/tag/v1.0.0): RuboCop assumes that Cop classes do not define new `on_<type>` methods at runtime (e.g. via `extend` in `initialize`).
+- [1.0.0](https://github.com/rubocop/rubocop/releases/tag/v1.0.0): ~~Enable all pending cops for RuboCop 1.0~~. These have been disabled until further review.
+- [1.0.0](https://github.com/rubocop/rubocop/releases/tag/v1.0.0): Change logic for cop department name computation. Cops inside deep namespaces (5 or more levels deep) now belong to departments with names that are calculated by joining module names starting from the third one with slashes as separators. For example, cop `Rubocop::Cop::Foo::Bar::Baz` now belongs to `Foo/Bar` department (previously it was `Bar`).
+
+Disabled all new cops that are pending by default and all cops that were pending prior to Rubocop 1.0 until further review.
+
 ## 3.0.0 - 2022-10-07
 
 ### Updated
