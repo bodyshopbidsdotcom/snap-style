@@ -170,7 +170,7 @@ Layout/EmptyLineAfterGuardClause:
 Migration/DepartmentName:
   Enabled: false
 
-# The following cops were added between 0.92.0 and 1.14.0
+# The following cops were added (or enabled) between 0.92.0 and 1.14.0
 Gemspec/DateAssignment: # new in 1.10
   Enabled: false
 Layout/LineEndStringConcatenationIndentation: # new in 1.18
