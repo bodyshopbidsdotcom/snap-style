@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/)
 
 Relax dependency to `rubocop` to enable support for Ruby 3.2
 
-No breaking changes were introduced till this version.
+No breaking changes were introduced until this version.
 
 ## 4.0.0 - 2023-01-05
 
