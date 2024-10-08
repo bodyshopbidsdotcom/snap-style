@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 
+## 5.0.0 - 2024-10-07
+
+Relax dependency to `rubocop` to enable support for Ruby 3.2
+
+No breaking changes were introduced till this version.
+
 ## 4.0.0 - 2023-01-05
 
 Relax dependency to `rubocop` to enable support for Ruby 3.1
