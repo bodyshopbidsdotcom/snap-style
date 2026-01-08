@@ -11,21 +11,27 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Snapsheet private style gem.}
   spec.description   = %q{This was created to enforce a consistent style across many projects.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/bodyshopbidsdotcom/snap-style"
+  spec.license       = nil
 
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
+  spec.files = Dir.chdir(File.expand_path(__dir__)) do
+    Dir[
+      "lib/**/*",
+      "README.md",
+      "CHANGELOG.md",
+      "rubocop/**/*.yml"
+    ]
   end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "rubocop", "~> 1.26"
-  spec.add_dependency "rubocop-rails", "~> 2.5.2"
+  spec.required_ruby_version = '>= 3.3'
 
-  spec.add_development_dependency "bundler", "~> 1.17.3"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_dependency "rubocop", "~> 1.75"
+  spec.add_dependency "rubocop-rails", "~> 2.23"
+
+  spec.add_development_dependency "bundler", "~> 2.5"
+  spec.add_development_dependency "rake", "~> 13.0"
+  spec.add_development_dependency "rspec", "~> 3.13"
 
   if spec.respond_to?(:metadata)
     spec.metadata['github_repo'] = 'https://github.com/bodyshopbidsdotcom/snap-style'
