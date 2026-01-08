@@ -1,0 +1,27 @@
+# Base image
+ARG RUBY_VERSION=3.3.10
+FROM ruby:$RUBY_VERSION
+# Setup environment variables that will be available to the instance
+# and set it as the working directory.
+ENV APP_HOME /app
+WORKDIR $APP_HOME
+
+# Install ruby dependency packages
+ARG GITHUB_OAUTH_CREDENTIALS
+ARG BUNDLER_VERSION_NUMBER=2.5.22
+ARG BUNDLE_GEMFILE=Gemfile
+ENV BUNDLE_GITHUB__COM $GITHUB_OAUTH_CREDENTIALS
+ENV BUNDLER_VERSION $BUNDLER_VERSION_NUMBER
+ENV BUNDLE_GEMFILE $BUNDLE_GEMFILE
+
+RUN gem install bundler:$BUNDLER_VERSION_NUMBER \
+  && bundle config https://rubygems.pkg.github.com/bodyshopbidsdotcom $GITHUB_OAUTH_CREDENTIALS
+
+# COPY snap-style.gemspec ./
+# COPY lib/snap/style/version.rb ./lib/snap/style/
+# COPY Gemfile* ./
+
+# Copy over our application code
+COPY ./ $APP_HOME
+
+ENV PATH "$APP_HOME/bin:$PATH"
