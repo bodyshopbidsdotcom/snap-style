@@ -17,10 +17,6 @@ ENV BUNDLE_GEMFILE $BUNDLE_GEMFILE
 RUN gem install bundler:$BUNDLER_VERSION_NUMBER \
   && bundle config https://rubygems.pkg.github.com/bodyshopbidsdotcom $GITHUB_OAUTH_CREDENTIALS
 
-# COPY snap-style.gemspec ./
-# COPY lib/snap/style/version.rb ./lib/snap/style/
-# COPY Gemfile* ./
-
 # Copy over our application code
 COPY ./ $APP_HOME
 
