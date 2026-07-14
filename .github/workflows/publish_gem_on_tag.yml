@@ -1,0 +1,19 @@
+name: Build and Publish Ruby Gem on Tag Pushes
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - uses: actions/checkout@v7
+    - name: Build and Publish Ruby Gem on Tag Pushes
+      uses: bodyshopbidsdotcom/gh-action-publish-gem-on-tag@latest
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        owner: bodyshopbidsdotcom

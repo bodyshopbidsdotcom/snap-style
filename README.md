@@ -102,23 +102,27 @@ inherit_from:
 
 ## Building/Publishing New Version
 
-To release a new version, update the `Snap::Style::VERSION` version number in `version.rb`.
+Publishing is automated via the [`gh-action-publish-gem-on-tag`](https://github.com/bodyshopbidsdotcom/gh-action-publish-gem-on-tag) GitHub Action (see [Use Github Package Registry For Internal Ruby Gems](https://snapsheettech.atlassian.net/wiki/spaces/TECH/pages/270467413/Use+Github+Package+Registry+For+Internal+Ruby+Gems)). Pushing a version tag builds the gem and publishes it to the GitHub Package Registry.
 
-Then run `gem build snap-style.gemspec` to ensure it builds, then update the CHANGELOG.md and commit the version
+To release a new version:
 
-Create and push tags:
+1. Update the `Snap::Style::VERSION` version number in `lib/snap/style/version.rb` and add a `CHANGELOG.md` entry.
+2. Run `gem build snap-style.gemspec` to ensure it builds, then commit and merge to `master`.
+3. Tag the release and push the tag. The tag **must** match the gemspec version exactly, with **no `v` prefix** — the action validates `tag == gemspec version`, so a `v`-prefixed tag will fail:
 
-    $ git tag -a v{version} -m "Release {version}"
-    $ git push origin v{version}
+       $ git tag -a 6.0.0 -m "Release 6.0.0"
+       $ git push origin 6.0.0
 
+   Pushing the tag triggers the `Build and Publish Ruby Gem on Tag Pushes` workflow, which builds and publishes the gem.
+4. Confirm the new version appears at https://github.com/orgs/bodyshopbidsdotcom/packages.
 
-Example:
+> Note: releases before 6.0.0 used `v`-prefixed tags (e.g. `v5.0.0`). Going forward, tags are non-prefixed (`X.Y.Z`) so they work with the publish action.
 
-    $ git tag -a v1.0.0 -m "Release 1.0.0"
-    $ git push origin v1.0.0
+### Publishing manually (fallback)
 
-Finally, publish the new version to the Github Package Registry (see https://snapsheettech.atlassian.net/wiki/spaces/TECH/pages/149946563/Github+Package+Registry):
+If you need to publish without the action:
 
 ```
+gem build snap-style.gemspec
 gem push --key github --host https://rubygems.pkg.github.com/bodyshopbidsdotcom snap-style-<VERSION>.gem
 ```
