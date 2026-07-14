@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 
+## 6.0.0 - 2026-01-08
+
+Relax dependency to `rubocop-rails` to enable support for Rails 7.1
+
 ## 5.0.0 - 2024-10-07
 
 Relax dependency to `rubocop` to enable support for Ruby 3.2
